@@ -1,0 +1,15 @@
+mixin pageTitle(title = 'Webpack4 bone v2.0')
+  title= title
+
+doctype html
+html(lang="zh-Hant")
+  head
+    include meta
+    block head
+      +pageTitle
+  body
+    block header
+      include main-header
+    block content
+    block footer
+      include main-footer
