@@ -61,3 +61,40 @@ exports.page = ({
     }),
   ],
 });
+
+/**
+ * Assets
+ */
+exports.loadImages = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+        include,
+        exclude,
+        use: [
+          {
+            loader: 'url-loader',
+            options,
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+});

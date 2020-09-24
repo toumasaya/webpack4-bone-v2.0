@@ -11,6 +11,12 @@ const commonConfig = merge([
     entry: {
       app: [pathConfig.PATHS.app],
     },
+    resolve: {
+      modules: [
+        'node_modules',
+        'src', // <-- your images folder contained here
+      ],
+    },
   },
   parts.loadPug({
     options: {

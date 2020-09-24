@@ -15,6 +15,12 @@ const productionConfig = merge([
       // publicPath: '/app-iWatcHome/',
     },
   },
+  parts.loadImages({
+    options: {
+      limit: 1000,
+      name: 'images/[name].[hash:5].[ext]',
+    },
+  }),
   {
     optimization: {
       splitChunks: {
