@@ -63,6 +63,22 @@ exports.page = ({
 });
 
 /**
+ * Styles
+ */
+exports.loadCSS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(scss|sass)$/,
+        include,
+        exclude,
+        use: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
+      },
+    ],
+  },
+});
+
+/**
  * Assets
  */
 exports.loadImages = ({ include, exclude, options } = {}) => ({

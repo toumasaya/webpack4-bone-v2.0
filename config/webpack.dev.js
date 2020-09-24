@@ -15,6 +15,7 @@ const developmentConfig = merge([
     host: process.env.HOST,
     port: 1234,
   }),
+  parts.loadCSS(),
   parts.loadImages(),
 ]);
 

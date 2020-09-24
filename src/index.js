@@ -1,3 +1,5 @@
+import './sass/main.sass';
+
 // ES6 syntax example
 const fn = () => 1;
 
