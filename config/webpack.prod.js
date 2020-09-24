@@ -15,6 +15,9 @@ const productionConfig = merge([
       // publicPath: '/app-iWatcHome/',
     },
   },
+  parts.loadJavaScript({
+    exclude: /node_modules/,
+  }),
   parts.loadImages({
     options: {
       limit: 1000,
