@@ -17,6 +17,14 @@ const productionConfig = merge([
     },
   },
   parts.minifyJavaScript(),
+  parts.minifyCSS({
+    options: {
+      discardComments: {
+        removeAll: true,
+      },
+      safe: true,
+    },
+  }),
   parts.extractCSS({
     use: ['css-loader', 'sass-loader', parts.autoprefix()],
   }),
