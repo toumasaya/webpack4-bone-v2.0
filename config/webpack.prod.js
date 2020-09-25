@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
+const glob = require('glob-all');
 const pathConfig = require('../webpack.paths');
 const parts = require('./webpack.parts');
 
@@ -15,6 +16,14 @@ const productionConfig = merge([
       // publicPath: '/app-iWatcHome/',
     },
   },
+  parts.extractCSS({
+    use: ['css-loader', 'sass-loader', parts.autoprefix()],
+  }),
+  parts.purifyCSS({
+    paths: glob.sync([`${pathConfig.PATHS.app}/**/*`], {
+      nodir: true,
+    }),
+  }),
   parts.loadJavaScript({
     exclude: /node_modules/,
   }),

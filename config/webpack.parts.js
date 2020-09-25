@@ -78,6 +78,53 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
   },
 });
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+exports.extractCSS = ({ include, exclude, use = [] }) => {
+  // Output extracted CSS to a file
+  const plugin = new MiniCssExtractPlugin({
+    filename: 'css/[name].[contenthash:5].css',
+  });
+
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.(scss|sass)$/,
+          include,
+          exclude,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '../',
+              },
+            },
+          ].concat(use),
+        },
+      ],
+    },
+    plugins: [plugin],
+  };
+};
+
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+
+exports.purifyCSS = ({ paths }) => ({
+  plugins: [
+    new PurgecssPlugin({
+      paths,
+    }),
+  ],
+});
+
+exports.autoprefix = () => ({
+  loader: 'postcss-loader',
+  options: {
+    plugins: () => [require('autoprefixer')()],
+  },
+});
+
 /**
  * Assets
  */
