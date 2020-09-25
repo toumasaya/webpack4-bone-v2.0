@@ -227,3 +227,7 @@ exports.setEnvVariables = (obj) => {
     plugins: [new webpack.DefinePlugin(obj)],
   };
 };
+
+exports.setNoErrors = () => {
+  return new webpack.NoEmitOnErrorsPlugin();
+};
