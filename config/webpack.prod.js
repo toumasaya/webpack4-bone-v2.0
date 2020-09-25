@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const path = require('path');
 const glob = require('glob-all');
 const pathConfig = require('../webpack.paths');
 const parts = require('./webpack.parts');

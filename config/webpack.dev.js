@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const path = require('path');
 const webpack = require('webpack');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const parts = require('./webpack.parts');
@@ -10,7 +9,11 @@ const developmentConfig = merge([
     watchOptions: {
       ignored: /\/node_modules\/.*/,
     },
-    plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin(), new ErrorOverlayPlugin()],
+    plugins: [
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new ErrorOverlayPlugin(),
+    ],
   },
   parts.setEnvVariables({
     'process.env': {

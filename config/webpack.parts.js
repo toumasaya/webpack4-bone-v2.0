@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const path = require('path');
 
 /**
  * Server
@@ -49,8 +48,6 @@ exports.page = ({
   template = require.resolve('./app/views/index.pug'),
   title,
   minify,
-  syncScript = '',
-  deferScript = '',
 } = {}) => ({
   plugins: [
     new HtmlWebpackPlugin({
@@ -121,6 +118,7 @@ exports.purifyCSS = ({ paths }) => ({
 exports.autoprefix = () => ({
   loader: 'postcss-loader',
   options: {
+    // eslint-disable-next-line global-require
     plugins: () => [require('autoprefixer')()],
   },
 });
