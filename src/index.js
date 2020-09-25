@@ -9,6 +9,8 @@ class Person {}
 
 const imgs = Array.from(document.querySelectorAll('img'));
 
+console.log('Hello');
+
 imgs.forEach((element) => {
   element.addEventListener('load', function () {
     console.log('load image');

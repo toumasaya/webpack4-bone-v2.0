@@ -16,6 +16,7 @@ const productionConfig = merge([
       // publicPath: '/app-iWatcHome/',
     },
   },
+  parts.minifyJavaScript(),
   parts.extractCSS({
     use: ['css-loader', 'sass-loader', parts.autoprefix()],
   }),
