@@ -59,6 +59,7 @@ const productionConfig = merge([
       },
     },
   },
+  parts.attachRevision(),
 ]);
 
 module.exports = productionConfig;

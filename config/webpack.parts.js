@@ -231,3 +231,17 @@ exports.setEnvVariables = (obj) => {
 exports.setNoErrors = () => {
   return new webpack.NoEmitOnErrorsPlugin();
 };
+
+/**
+ * Building
+ */
+
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
+
+exports.attachRevision = () => ({
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: new GitRevisionPlugin().version(),
+    }),
+  ],
+});
