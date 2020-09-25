@@ -211,3 +211,19 @@ exports.minifyCSS = ({ options }) => ({
     }),
   ],
 });
+
+exports.setFreeVariable = (key, value) => {
+  const env = {};
+  env[key] = JSON.stringify(value);
+
+  return {
+    plugins: [new webpack.DefinePlugin(env)],
+  };
+};
+
+// Best approach to pass Environment Variables
+exports.setEnvVariables = (obj) => {
+  return {
+    plugins: [new webpack.DefinePlugin(obj)],
+  };
+};

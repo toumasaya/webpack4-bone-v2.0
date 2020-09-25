@@ -12,6 +12,12 @@ const developmentConfig = merge([
     },
     plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin(), new ErrorOverlayPlugin()],
   },
+  parts.setEnvVariables({
+    'process.env': {
+      NODE_ENV: '"development"',
+      styleguideEnabled: true,
+    },
+  }),
   parts.devServer({
     host: process.env.HOST,
     port: 1234,
